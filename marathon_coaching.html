@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marathon Coaching</title>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { font-family: 'Montserrat', sans-serif; box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { background: #0a0a0c; color: #fff; }
+
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .step-line { width: 1px; height: 40px; background: linear-gradient(to bottom, #4D94F2, transparent); margin: 8px auto; }
+
+    .btn-primary {
+      display: inline-block;
+      background: #4D94F2;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .btn-primary:hover { background: #3a7dd4; transform: translateY(-1px); }
+
+    .arrow-btn {
+      flex-shrink: 0;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      background: transparent;
+      cursor: pointer;
+    }
+    .arrow-btn:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+    section { padding: 64px 24px; }
+    .section-border { border-top: 1px solid rgba(255,255,255,0.05); }
+    .center { text-align: center; }
+    h2 { font-size: clamp(20px,4vw,30px); font-weight: 700; letter-spacing: -0.3px; margin-bottom: 40px; }
+
+    /* Video grid */
+    .grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 640px) {
+      .grid3 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    }
+
+    /* YouTube video card — click-to-embed for performance */
+    .yt-card {
+      position: relative;
+      aspect-ratio: 9 / 16;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #111;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .yt-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .yt-card:hover img { transform: scale(1.04); }
+    .yt-card .yt-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .yt-card:hover .yt-overlay { background: rgba(0,0,0,0.12); }
+    .yt-play-btn {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: rgba(77,148,242,0.88);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(77,148,242,0.35);
+      transition: transform 0.25s, background 0.25s;
+    }
+    .yt-card:hover .yt-play-btn { transform: scale(1.12); background: #4D94F2; }
+    .yt-card iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<section style="position:relative;padding:0;">
+  <div style="position:absolute;inset:0;background:#0a0a0c;"></div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;padding:80px 24px 56px;">
+    <div style="max-width:560px;width:100%;text-align:center;">
+      <h1 class="fade-in" style="font-size:clamp(28px,5vw,48px);font-weight:700;line-height:1.2;letter-spacing:-0.5px;margin-bottom:20px;">Master Your Next Marathon</h1>
+      <p class="fade-in" style="font-size:15px;font-weight:300;color:#d1d5db;line-height:1.7;margin-bottom:12px;">Are you a runner from the Nordics, who want structure to your running so you can master your next marathon without injuries?</p>
+      <p class="fade-in" style="font-size:12px;color:#4b5563;font-style:italic;margin-bottom:28px;">"Your next marathon should be built around your body."</p>
+      <a href="https://cal.com/oskar-palm-ufblpm/2" target="_blank" rel="noopener noreferrer" class="btn-primary fade-in">Start Your Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- VSL (4.5 min) -->
+<section id="vsl-section" style="padding:20px 24px 32px;">
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <div style="position:relative;padding:56.25% 0 0 0;border-radius:10px;overflow:hidden;" class="fade-in">
+      <!-- Long VSL underneath -->
+      <iframe id="vsl-iframe"
+        src="https://player.vimeo.com/video/1192509698?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=vsl-iframe&app_id=58479"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;">
+      </iframe>
+      <!-- Looping preview on top -->
+      <div id="vsl-overlay" style="position:absolute;inset:0;z-index:2;cursor:pointer;" onclick="startVSL()">
+        <iframe
+          src="https://player.vimeo.com/video/1192815840?badge=0&autopause=0&player_id=loop-iframe&app_id=58479&autoplay=1&muted=1&loop=1&background=1"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;">
+        </iframe>
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(77,148,242,0.88);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 32px rgba(77,148,242,0.4);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:20px;">
+      <a href="https://cal.com/oskar-palm-ufblpm/2" target="_blank" rel="noopener noreferrer" class="btn-primary fade-in">Start Your Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Carousel -->
+<section style="padding:40px 24px;" class="section-border">
+  <div style="max-width:900px;margin:0 auto;">
+    <h2 class="fade-in center">What Our Athletes Say</h2>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button id="prev-btn" class="arrow-btn"><i data-lucide="chevron-left" style="width:16px;height:16px;"></i></button>
+      <div id="carousel-window" style="flex:1;overflow:hidden;">
+        <div id="carousel" style="display:flex;will-change:transform;transition:transform 0.45s ease;"></div>
+      </div>
+      <button id="next-btn" class="arrow-btn"><i data-lucide="chevron-right" style="width:16px;height:16px;"></i></button>
+    </div>
+    <div id="dot-container" style="display:flex;justify-content:center;gap:6px;margin-top:20px;"></div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section>
+  <div style="max-width:480px;margin:0 auto;text-align:center;">
+    <h2 class="fade-in">How It Works</h2>
+    <div class="fade-in">
+      <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(77,148,242,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><span style="font-size:11px;color:#4D94F2;font-weight:600;">1</span></div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:4px;">Analysis</p>
+      <p style="font-size:12px;color:#6b7280;">We analyze your running history, physiology, and goals.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="fade-in">
+      <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(77,148,242,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><span style="font-size:11px;color:#4D94F2;font-weight:600;">2</span></div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:4px;">Your Plan</p>
+      <p style="font-size:12px;color:#6b7280;">Receive a fully personalized marathon training structure.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="fade-in">
+      <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(77,148,242,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><span style="font-size:11px;color:#4D94F2;font-weight:600;">3</span></div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:4px;">Accountability</p>
+      <p style="font-size:12px;color:#6b7280;">Ongoing adjustments, feedback, and progression tracking.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="fade-in">
+      <div style="width:40px;height:40px;border-radius:50%;border:1px solid rgba(77,148,242,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;"><span style="font-size:11px;color:#4D94F2;font-weight:600;">4</span></div>
+      <p style="font-size:13px;font-weight:600;margin-bottom:4px;">Race Day</p>
+      <p style="font-size:12px;color:#6b7280;margin-bottom:28px;">You arrive fully prepared, confident, and race-ready.</p>
+      <a href="https://cal.com/oskar-palm-ufblpm/2" target="_blank" rel="noopener noreferrer" class="btn-primary">Start Your Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- Athlete Transformations (videos 1–3) -->
+<section class="section-border">
+  <div style="max-width:560px;margin:0 auto;text-align:center;">
+    <h2 class="fade-in">Athlete Transformations</h2>
+    <div class="grid3 fade-in" id="grid-top"></div>
+    <div style="margin-top:28px;">
+      <a href="https://cal.com/oskar-palm-ufblpm/2" target="_blank" rel="noopener noreferrer" class="btn-primary fade-in">Start Your Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- Special video (YBP3IVer89E) -->
+<section style="padding:32px 24px;">
+  <div style="max-width:360px;margin:0 auto;">
+    <div class="yt-card fade-in" data-id="YBP3IVer89E" onclick="loadYT(this)">
+      <img src="https://img.youtube.com/vi/YBP3IVer89E/hqdefault.jpg" alt="" loading="lazy">
+      <div class="yt-overlay">
+        <div class="yt-play-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- More Transformations (videos 4–18) -->
+<section class="section-border">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="grid3 fade-in" id="grid-bottom"></div>
+    <div class="center" style="margin-top:28px;">
+      <a href="https://cal.com/oskar-palm-ufblpm/2" target="_blank" rel="noopener noreferrer" class="btn-primary fade-in">Start Your Application</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding:40px 24px;border-top:1px solid rgba(255,255,255,0.05);text-align:center;">
+  <p style="font-size:11px;color:#374151;">© 2024 · Personalized Marathon Coaching</p>
+</footer>
+
+<script>
+// ─── VSL overlay ───────────────────────────────────────────────────────────────
+function startVSL() {
+  document.getElementById('vsl-overlay').style.display = 'none';
+  new Vimeo.Player(document.getElementById('vsl-iframe')).play();
+}
+
+// ─── YouTube click-to-embed ─────────────────────────────────────────────────────
+// Thumbnail shown first for performance; iframe loads on click with autoplay.
+// Videos embed fully in-page — users never leave the site.
+// NOTE: if you see error 153, go to YouTube Studio → each video →
+//       Details → More options → enable "Allow embedding", then save.
+function loadYT(card) {
+  var id = card.dataset.id;
+  card.innerHTML =
+    '<iframe src="https://www.youtube.com/embed/' + id +
+    '?rel=0&modestbranding=1&autoplay=1&playsinline=1" ' +
+    'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+  card.style.cursor = 'default';
+  card.onclick = null;
+}
+
+// ─── Video grid builder ─────────────────────────────────────────────────────────
+var shortIds = [
+  'uZpSTkHAhsg','GFmc29TDg94',
+  'cft32sbJq4w','He3C_6xS9io','f3GfZ4uT5Z8',
+  'V5A2RvPT3ZA','DhdTicdRlvM','csivnJ-hokQ',
+  'qyzeAHZc57U','TEdjZc-fqI0','3BapkQuz7-I',
+  '01A2WUD5xeg','0Exi74LBK0g','ioGuhFia38Q',
+  'KVUE310nBCI','aYqlMbr9si8','-8EIyRCNE8I','KkUQhCubr08'
+];
+
+var playSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>';
+
+function makeCard(id) {
+  return '<div class="yt-card" data-id="' + id + '" onclick="loadYT(this)">'
+    + '<img src="https://img.youtube.com/vi/' + id + '/hqdefault.jpg" alt="" loading="lazy">'
+    + '<div class="yt-overlay"><div class="yt-play-btn">' + playSVG + '</div></div>'
+    + '</div>';
+}
+
+document.getElementById('grid-top').innerHTML    = shortIds.slice(0, 2).map(makeCard).join('');
+document.getElementById('grid-bottom').innerHTML = shortIds.slice(2).map(makeCard).join('');
+
+// ─── Testimonials carousel ──────────────────────────────────────────────────────
+var testimonials = [
+  { name: 'Malena',  quote: 'From now on, I\'m not gonna try for years to learn things on my own. I\'m gonna do it with someone. Because the results come so fast.' },
+  { name: 'Mattias', quote: 'My first 10k race in 15 years and I finished under 45 min! Biggest thanks to Oskar Palm who believed in me and had a clear personal plan from day 1.' },
+  { name: 'Henrik',  quote: 'All 3 kids tagged along for parts of the run.' },
+  { name: 'Joseph',  quote: 'After going from 51 min to 43 min in the 10k in 74 days, I wouldn\'t have believed this was possible 3 months ago.' },
+  { name: 'Giulio',  quote: 'I wasn\'t consistent before, but now with your support and a good training plan, I can do it.' },
+  { name: 'Cody',    quote: 'Running faster feels a lot easier, there is no joint pain. I really feel like the sky\'s gonna be the limit.' },
+  { name: 'Peter',   quote: 'I\'ve always had to stop due to pain in my knees or shins around the 10k mark, but now I\'ve run up to 34k without any pain.' },
+  { name: 'Sandra',  quote: 'I was 14 min faster than my last marathon and this time without pain.' },
+  { name: 'Anton',   quote: 'I\'ve been struggling with knee pain almost my whole adult life, and now we\'re at a point where I can run pain free.' },
+  { name: 'Lina',    quote: 'I wouldn\'t have done the 27k run if I knew you wouldn\'t ask me about it.' },
+  { name: 'Ghanem',  quote: 'I chose you because your passion is real. You took the time to explain everything clearly, made me feel confident, and genuinely wanted me to win.' }
+];
+var currentIndex = 0;
+
+function buildCarousel() {
+  var win = document.getElementById('carousel-window');
+  var track = document.getElementById('carousel');
+  var cardW = Math.floor(win.offsetWidth / 3);
+  track.style.width = (cardW * testimonials.length) + 'px';
+  track.innerHTML = testimonials.map(function(t) {
+    return '<div style="width:' + cardW + 'px;flex-shrink:0;padding:0 5px;box-sizing:border-box;">'
+      + '<div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px 14px;height:320px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;">'
+      + '<p style="font-size:11px;color:#d1d5db;line-height:1.6;font-style:italic;">&ldquo;' + t.quote + '&rdquo;</p>'
+      + '<p style="font-size:11px;font-weight:600;color:#4D94F2;margin-top:8px;flex-shrink:0;">&#8212; ' + t.name + '</p>'
+      + '</div></div>';
+  }).join('');
+  window._cardW = cardW;
+  moveToIndex(currentIndex, false);
+  buildDots();
+}
+
+function moveToIndex(i, animate) {
+  currentIndex = i;
+  var track = document.getElementById('carousel');
+  track.style.transition = animate === false ? 'none' : 'transform 0.45s ease';
+  track.style.transform = 'translateX(-' + (currentIndex * (window._cardW || 0)) + 'px)';
+  buildDots();
+}
+
+function buildDots() {
+  document.getElementById('dot-container').innerHTML = testimonials.map(function(_, i) {
+    return '<button onclick="moveToIndex(' + i + ',true)" style="width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;background:' + (i === currentIndex ? '#4D94F2' : 'rgba(255,255,255,0.2)') + ';"></button>';
+  }).join('');
+}
+
+document.getElementById('next-btn').addEventListener('click', function() { moveToIndex((currentIndex + 1) % testimonials.length, true); });
+document.getElementById('prev-btn').addEventListener('click', function() { moveToIndex((currentIndex - 1 + testimonials.length) % testimonials.length, true); });
+window.addEventListener('resize', buildCarousel);
+
+// ─── Scroll fade-ins ────────────────────────────────────────────────────────────
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+buildCarousel();
+lucide.createIcons();
+</script>
+</body>
+</html>
